@@ -1,18 +1,15 @@
 import React from "react";
-import Link from "next/link";
 import Head from "next/head";
 import Script from "next/script";
-import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import { posts } from "../../components/postData";
 
-const FirstPost = () => {
+const Post = () => {
   const router = useRouter();
-  console.log(router);
   const post = posts.filter((post) => post.slug === router.query.slug)[0];
 
   return (
-    <Layout>
+    <>
       {post && (
         <>
           <Head>
@@ -27,13 +24,14 @@ const FirstPost = () => {
               )
             }
           />
-          <h1>{post.title}</h1>
-
-          <p>{post.body}</p>
+          <div className="border-2 border-gray-400 p-4 rounded-md">
+            <h1 className="text-lg font-semibold mb-4">{post.title}</h1>
+            <p>{post.body}</p>
+          </div>
         </>
       )}
-    </Layout>
+    </>
   );
 };
 
-export default FirstPost;
+export default Post;

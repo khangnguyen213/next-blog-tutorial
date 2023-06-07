@@ -1,24 +1,37 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
 import Posts from "../components/Posts";
 import { posts } from "../components/postData";
+import Link from "next/link";
 
-export default function Home() {
+function Home() {
   return (
-    <Layout home>
+    <>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <section className="text-xl text-justify">
         <p>
-          I am an enthusiastic and dedicated person eager to kickstart my career
-          in the field of web development. With a foundation in front-end and
-          back-end, I have a passion for continuous learning and growth.
+          Hello everyone. I'm Nguyen Minh Khang, an entry-level full-stack
+          developer!! This is my demo blog for Next.JS tutorial, enjoy ~
         </p>
-        <h1>Posts</h1>
-        <Posts posts={posts} />
+        <div className="mt-2">
+          <Link href="/captur">
+            {" "}
+            <h1 className="hover:bg-black hover:text-white duration-200 font-bold text-xl px-2 py-1 rounded-md border-2 border-black w-fit">
+              Captur Gallery
+            </h1>
+          </Link>
+        </div>
+        <div className="mt-4">
+          <h1 className="font-bold text-2xl">Posts</h1>
+          <Posts posts={posts} />
+        </div>
       </section>
-    </Layout>
+    </>
   );
 }
+
+Home.isHome = true;
+
+export default Home;
